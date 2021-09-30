@@ -7,13 +7,11 @@ const app = express();
 const photoController = require('./controllers/photoController')
 const pageController = require('./controllers/pageController')
 
-mongoose.connect('mongodb://localhost/test', {
+mongoose.connect('mongodb+srv://fuatguzel:BuLmggoAU1L4vKka@cluster0.sxzwy.mongodb.net/node-photo-gallery?retryWrites=true&w=majority', {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
   // useFindAndModify: false,
 })
-
-const PORT = 3000;
 
 // TEMPLATE ENGINE
 app.set("view engine", "ejs");
@@ -41,6 +39,6 @@ app.get('/add', pageController.getAddPage)
 app.get('/photos/edit/:id', pageController.getEditPage)
 
 
-app.listen(PORT, (req, res) => {
+app.listen(process.env.PORT || 5000, (req, res) => {
   console.log(`Listening port ${PORT}...`);
 })
