@@ -1,0 +1,39 @@
+<%- include('partials/_header') -%>
+<body>
+  <!-- NAV -->
+<%- include('partials/_navigation') -%>
+
+  <!-- CONTAINER -->
+  <div class="container">
+  <!-- contact -->
+  <section data-page-id="page-4" class="content js-content">
+                                
+    <header class="box box-black margin-b-20">
+        <h2 class="box-text page-title-text">Edit The Photo</h2>
+    </header>
+    
+    <div class="content-text">
+        <form method="POST" action="/photos/<%= photo._id %>?_method=PUT"  class="contact-form" encType="multipart/form-data">
+            <div class="form-group">
+                <input type="text" 
+                value="<%= photo.title %>" 
+                name="title" class="form-control" placeholder="Photo Title" required/>
+            </div>
+            <!-- <div class="form-group">
+                <textarea name="description" class="form-control" rows="4" placeholder="Photo Description" required></textarea>
+            </div> -->
+            <div class="form-group">
+              <input type="file" class="form-control" name="image">
+            </div>
+            <div class="form-group">
+              <button type="submit" class="btn btn-success submit-btn">Update</button>
+            </div>
+        </form>                           
+    </div>            
+
+  </section> <!-- #contact -->
+</div>
+  <!-- FOOTER -->
+    <%- include('partials/_footer') -%>
+</body>
+</html>
