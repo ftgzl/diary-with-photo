@@ -21,12 +21,26 @@
       <% if(photos.length>0) { %>
       <ul class="pagination">
         <% for(let i=1; i <= pages; i++) { %>
-          <li class="page-item">
-            <a class="page-link" href="/?page=<%= i %>">
-              <%= i %>
-            </a>
-          </li>
-          <% } %>
+          <% if(i === current) { %>
+            <li class="page-item active">
+              <a class="page-link " href="/?page=<%= i %>">
+                <%= i %>
+              </a>
+            </li>
+            <% } else if(i < pages) { %>
+              <li class="page-item">
+                <a class="page-link" href="/?page=<%= i %>">
+                  <%= i %>
+                </a>
+              </li>
+            <% } else { %>
+              <li class="page-item">
+                <a class="page-link" href="/?page=<%= i %>">
+                  <%= pages %>
+                </a>
+              </li>
+            <% } %>
+        <% } %>
       </ul>
       <% } %>
     </div>
