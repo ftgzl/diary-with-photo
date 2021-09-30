@@ -9,9 +9,9 @@ const Photo = require('./models/photo');
 const app = express();
 
 mongoose.connect('mongodb://localhost/test', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true,
-  useFindAndModify: false,
+  // useNewUrlParser: true,
+  // useUnifiedTopology: true,
+  // useFindAndModify: false,
 })
 
 const PORT = 3000;
@@ -47,7 +47,7 @@ app.get('/', async (req, res) => {
   //res.render('index')
 
   //4
-  const photos = await Photo.find({})
+  const photos = await Photo.find({}).sort({createdAt: -1})
   res.render('index', {
     photos
   })
