@@ -40,5 +40,5 @@ app.get('/photos/edit/:id', pageController.getEditPage)
 
 
 app.listen(process.env.PORT || 5000, (req, res) => {
-  console.log(`Listening port ${PORT}...`);
+  console.log(`Listening server...`);
 })
