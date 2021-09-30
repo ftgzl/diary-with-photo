@@ -1,6 +1,7 @@
 const express = require('express');
 const path = require('path');
 const ejs = require('ejs');
+const methodOverride = require('method-override')
 const mongoose = require('mongoose');
 const fileUpload = require('express-fileupload')
 const fs = require('fs');
@@ -10,6 +11,7 @@ const app = express();
 mongoose.connect('mongodb://localhost/test', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
+  useFindAndModify: false,
 })
 
 const PORT = 3000;
@@ -25,6 +27,9 @@ app.use(express.json());
 
 app.use(fileUpload())
 
+app.use(methodOverride('_method', {
+  methods:['POST', 'GET']
+}))
 
 app.get('/', async (req, res) => {
   // 1
@@ -78,6 +83,30 @@ app.post('/photos', async (req, res) => {
     })
     res.redirect('/')
   })
+})
+
+app.get('/photos/edit/:id', async (req, res) => {
+  const photo = await Photo.findOne({_id: req.params.id})
+  res.render('edit', {photo})
+})
+
+app.put('/photos/:id', async (req, res) => {
+  const photo = await Photo.findOne({_id: req.params.id})
+  photo.title = req.body.title
+  //photo.description = req.body.Description
+  photo.save()
+
+  res.redirect(`/photos/${req.params.id}`)
+})
+
+app.delete('/photos/:id', async (req, res) => {
+  const photo = await Photo.findOne({_id: req.params.id})
+  let deletedImage = __dirname + '/public' + photo.image
+  fs.unlinkSync(deletedImage)
+
+  await Photo.findByIdAndRemove(req.params.id)
+  
+  res.redirect('/')
 })
 
 
