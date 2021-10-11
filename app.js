@@ -2,12 +2,15 @@ const express = require('express');
 const ejs = require('ejs');
 const methodOverride = require('method-override')
 const mongoose = require('mongoose');
+const dotenv = require('dotenv')
 const fileUpload = require('express-fileupload')
 const app = express();
 const photoController = require('./controllers/photoController')
 const pageController = require('./controllers/pageController')
 
-mongoose.connect('mongodb+srv://fuatguzel:BuLmggoAU1L4vKka@cluster0.sxzwy.mongodb.net/node-photo-gallery?retryWrites=true&w=majority', {
+dotenv.config()
+
+mongoose.connect(process.env.MONGO_URL, {
   // useNewUrlParser: true,
   // useUnifiedTopology: true,
   // useFindAndModify: false,
