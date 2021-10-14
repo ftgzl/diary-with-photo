@@ -1,5 +1,5 @@
 <%- include('partials/_header') -%>
-<body>
+<body style="background-color: #141414">
   <!-- NAV -->
 <%- include('partials/_navigation') -%>
 
@@ -9,7 +9,7 @@
   <section data-page-id="page-4" class="content js-content">
                                 
     <header class="box box-black margin-b-20">
-        <h2 class="box-text page-title-text">Edit The Photo</h2>
+        <h2 class="box-text page-title-text" style="color:#5F85DB;">Edit The Photo</h2>
     </header>
     
     <div class="content-text">
@@ -19,14 +19,16 @@
                 value="<%= photo.title %>" 
                 name="title" class="form-control" placeholder="Photo Title" required/>
             </div>
-            <!-- <div class="form-group">
-                <textarea name="description" class="form-control" rows="4" placeholder="Photo Description" required></textarea>
-            </div> -->
+            <div class="form-group">
+                <textarea name="description" class="form-control" rows="4" placeholder="Photo Description" required>
+                  <%= photo.description %>
+                </textarea>
+            </div>
             <div class="form-group">
               <input type="file" class="form-control" name="image">
             </div>
             <div class="form-group">
-              <button type="submit" class="btn btn-success submit-btn">Update</button>
+              <button type="submit" class="btn btn-success submit-btn" style="background-color:#5F85DB;">Update</button>
             </div>
         </form>                           
     </div>            
