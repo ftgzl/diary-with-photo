@@ -1,2 +1,2 @@
-# nodejs-photo
-Patika Photos example 
+# Online Diary
+
