@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const {Schema} = mongoose;
 
-const PhotoSchema = new Schema({
+const DiarySchema = new Schema({
   title: String,
   description: String,
   image: String,
@@ -11,6 +11,6 @@ const PhotoSchema = new Schema({
   }
 })
 
-const Photo = mongoose.model('Photo', PhotoSchema)
+const Diary = mongoose.model('Diary', DiarySchema)
 
-module.exports = Photo
+module.exports = Diary

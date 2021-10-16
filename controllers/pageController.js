@@ -1,11 +1,11 @@
 
-const Photo = require('../models/Photo');
+const Diary = require('../models/Diary');
 
 exports.getAddPage = (req, res) => {
   res.render('add')
 }
 
 exports.getEditPage = async (req, res) => {
-  const photo = await Photo.findOne({_id: req.params.id})
-  res.render('edit', {photo})
+  const diary = await Diary.findOne({_id: req.params.id})
+  res.render('edit', {diary})
 }

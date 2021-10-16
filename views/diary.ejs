@@ -1,0 +1,21 @@
+<%- include('partials/_header') -%>
+
+<body style="background-color: #141414">
+	<%- include('partials/_navigation') -%>
+	<div class="page-content">
+		<h1 class="mb0" style="color:#5F85DB;"><%= diary.title %> </h1>
+		<div class="meta"><span><a href="#"><%= diary.createdAt.toLocaleDateString() %></a></span></div>
+		<p><img src="<%= diary.image %>" alt="<%= diary.title %>"></p>
+		<p><%= diary.description %></p>
+		<a href="/diaries/edit/<%= diary._id %>" class="btn btn-success" style="background-color:#5F85DB;">Update</a>
+		<a href="/diaries/<%= diary._id %>?_method=DELETE" 
+			onclick="return confirm('Are you sure you want to delete?')"
+			class="btn btn-danger submit-btn" style="background-color: #5454C5">Remove</a>
+	</div>
+
+
+	<%- include('partials/_footer') %>
+
+</body>
+
+</html>

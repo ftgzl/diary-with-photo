@@ -7,17 +7,17 @@
 
   <div class="container">
     <div id="fh5co-projects-feed" class="fh5co-projects-feed clearfix masonry">
-      <% for(let i = 0; i < photos.length; i++) { %>
+      <% for(let i = 0; i < diaries.length; i++) { %>
       <div class="fh5co-project masonry-brick">
-        <a href="/photos/<%= photos[i]._id %>">
-          <img class="img-fluid img-thumbnail" src="<%= photos[i].image %>" alt="<%= photos[i].title %>">
+        <a href="/diaries/<%= diaries[i]._id %>">
+          <img class="img-fluid img-thumbnail" src="<%= diaries[i].image %>" alt="<%= diaries[i].title %>">
         </a>
-        <span> <%= photos[i].createdAt.toLocaleDateString() %> </span>
+        <span> <%= diaries[i].createdAt.toLocaleDateString() %> </span>
       </div>
       <% } %>
     </div>
     <div>
-      <% if(photos.length>0) { %>
+      <% if(diaries.length>0) { %>
       <ul class="pagination">
         <% for(let i=1; i <= pages; i++) { %>
           <% if(i == current) { %>

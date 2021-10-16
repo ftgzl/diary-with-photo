@@ -5,7 +5,7 @@ const mongoose = require('mongoose');
 const dotenv = require('dotenv')
 const fileUpload = require('express-fileupload')
 const app = express();
-const photoController = require('./controllers/photoController')
+const diaryController = require('./controllers/diaryController')
 const pageController = require('./controllers/pageController')
 
 dotenv.config()
@@ -32,14 +32,14 @@ app.use(methodOverride('_method', {
 }))
 
 // ROUTES
-app.get('/', photoController.getAllPhotos)
-app.get('/photos/:id', photoController.getPhoto)
-app.post('/photos', photoController.createPhoto)
-app.put('/photos/:id', photoController.updatePhoto)
-app.delete('/photos/:id', photoController.deletePhoto)
+app.get('/', diaryController.getAllDiaries)
+app.get('/diaries/:id', diaryController.getDiary)
+app.post('/diaries', diaryController.createDiary)
+app.put('/diaries/:id', diaryController.updateDiary)
+app.delete('/diaries/:id', diaryController.deleteDiary)
 
 app.get('/add', pageController.getAddPage)
-app.get('/photos/edit/:id', pageController.getEditPage)
+app.get('/diaries/edit/:id', pageController.getEditPage)
 
 
 app.listen(process.env.PORT || 5000, (req, res) => {
